@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/bottom_nav_squares"
+    android:icon="@drawable/ic_squares_white_24dp"
+    android:title="@string/squares" />
+  <item
+    android:id="@+id/bottom_nav_maps"
+    android:icon="@drawable/ic_navigation_white_24dp"
+    android:title="@string/maps" />
+  <item
+    android:id="@+id/bottom_nav_resources"
+    android:icon="@drawable/ic_book_white_24dp"
+    android:title="@string/resources" />
+</menu>
