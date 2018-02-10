@@ -1,4 +1,4 @@
-package com.palenafieldguide.ui.databinding
+package com.palenafieldguide.app.databinding
 
 import android.databinding.BindingAdapter
 import android.support.design.widget.BottomNavigationView

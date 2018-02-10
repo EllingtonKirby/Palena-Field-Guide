@@ -1,4 +1,4 @@
-package com.palenafieldguide
+package com.palenafieldguide.app
 
 import com.palenafieldguide.di.components.DaggerAppComponent
 import dagger.android.AndroidInjector

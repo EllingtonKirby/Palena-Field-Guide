@@ -1,6 +1,6 @@
 package com.palenafieldguide.di.components
 
-import com.palenafieldguide.App
+import com.palenafieldguide.app.App
 import com.palenafieldguide.di.modules.ActivityBuilder
 import com.palenafieldguide.di.modules.BaseModule
 import com.palenafieldguide.di.modules.NetworkingModule
