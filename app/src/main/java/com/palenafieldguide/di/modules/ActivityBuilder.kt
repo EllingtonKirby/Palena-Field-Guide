@@ -1,6 +1,6 @@
 package com.palenafieldguide.di.modules
 
-import com.palenafieldguide.di.scopes.PerActivity
+import com.palenafieldguide.di.utils.PerActivity
 import com.palenafieldguide.ui.bottomnav.BottomNavActivity
 import com.palenafieldguide.ui.bottomnav.BottomNavActivityModule
 import dagger.Module

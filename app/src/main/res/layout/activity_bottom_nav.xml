@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
   <data>
 
     <variable
-      name="navListener"
-      type="android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener" />
+        type="android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener"
+        name="navListener"
+        />
   </data>
 
   <android.support.design.widget.CoordinatorLayout
-    android:id="@+id/root"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+      android:id="@+id/root"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
 
     <FrameLayout
-      android:id="@+id/container"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
     <android.support.design.widget.BottomNavigationView
-      android:id="@+id/bottom_nav"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_gravity="bottom"
-      app:itemBackground="@color/colorPrimary"
-      app:itemIconTint="@color/white"
-      app:itemTextColor="@color/white"
-      app:menu="@menu/bottom_nav_main"
-      bind:onNavigationListener="@{navListener}" />
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:onNavigationListener="@{navListener}"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_nav_main"
+        />
 
   </android.support.design.widget.CoordinatorLayout>
 </layout>
