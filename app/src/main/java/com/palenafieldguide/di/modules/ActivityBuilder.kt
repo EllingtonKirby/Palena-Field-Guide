@@ -9,6 +9,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuilder {
     @PerActivity
-    @ContributesAndroidInjector(modules = [BottomNavActivityModule::class])
-    abstract fun bindsDrawerActivity(): BottomNavActivity
+    @ContributesAndroidInjector
+    abstract fun bindsBottomNavActivity(): BottomNavActivity
 }

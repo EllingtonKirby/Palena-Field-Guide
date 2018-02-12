@@ -10,7 +10,7 @@
 
   <style name="Base"/>
 
-  <style name="Base.Activity">
+  <style name="Base.Activity" parent="Theme.AppCompat">
     <item name="android:windowBackground">@color/colorAccent</item>
   </style>
 

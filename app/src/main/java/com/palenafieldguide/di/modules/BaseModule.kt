@@ -4,8 +4,9 @@ import android.app.Application
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class BaseModule {
-    @Provides fun providesApplication(application: Application) : Context = application
+    @Provides @Singleton fun providesApplication(application: Application) : Context = application
 }
