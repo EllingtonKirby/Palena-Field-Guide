@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/squares_width"
+    android:layout_height="@dimen/squares_height"
+    style="@style/SquaresView.Base"
+    >
+
+</android.support.v7.widget.CardView>

@@ -1,4 +1,4 @@
-package com.palenafieldguide.di.scopes
+package com.palenafieldguide.di.utils
 
 import javax.inject.Scope
 

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#3F51B5</color>
-  <color name="colorPrimaryDark">#303F9F</color>
-  <color name="colorAccent">#FF4081</color>
+  <color name="colorPrimary">@color/deep_blue</color>
+  <color name="colorPrimaryDark">@color/black_blue</color>
+  <color name="colorAccent">@color/blue_gray</color>
+
+
+  <!--Generic Colors-->
   <color name="white">#FFFFFF</color>
+  <color name="deep_blue">#1a237e</color>
+  <color name="black_blue">#111225</color>
+  <color name="blue_gray">#455a64</color>
 </resources>

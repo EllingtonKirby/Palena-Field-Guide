@@ -8,4 +8,18 @@
     <item name="colorAccent">@color/colorAccent</item>
   </style>
 
+  <style name="Base"/>
+
+  <style name="Base.Activity">
+    <item name="android:windowBackground">@color/colorAccent</item>
+  </style>
+
+  <style name="SquaresView"/>
+
+  <style name="SquaresView.Base" parent="CardView">
+    <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+    <item name="cardElevation">@dimen/cardview_default_elevation</item>
+  </style>
+
+
 </resources>

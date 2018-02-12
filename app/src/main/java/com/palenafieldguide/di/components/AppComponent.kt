@@ -1,10 +1,11 @@
 package com.palenafieldguide.di.components
 
-import com.palenafieldguide.App
+import com.palenafieldguide.app.App
 import com.palenafieldguide.di.modules.ActivityBuilder
 import com.palenafieldguide.di.modules.BaseModule
 import com.palenafieldguide.di.modules.NetworkingModule
-import com.palenafieldguide.di.scopes.PerApplication
+import com.palenafieldguide.di.modules.ViewModelModule
+import com.palenafieldguide.di.utils.PerApplication
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -15,7 +16,8 @@ import dagger.android.support.AndroidSupportInjectionModule
             AndroidSupportInjectionModule::class,
             BaseModule::class,
             NetworkingModule::class,
-            ActivityBuilder::class
+            ActivityBuilder::class,
+            ViewModelModule::class
         ]
 )
 
