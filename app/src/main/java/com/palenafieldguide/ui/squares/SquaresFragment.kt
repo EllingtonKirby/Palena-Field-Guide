@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class SquaresFragment : BaseFragment<FragmentSquaresBinding>(), SquaresFragmentView {
     override fun setupGridAdapter(spanCount: Int) {
-        squares_grid.layoutManager = GridLayoutManager(activity, 4)
+        squares_grid.layoutManager = GridLayoutManager(activity, spanCount)
         squares_grid.adapter = adapter
     }
 
@@ -50,11 +50,12 @@ class SquaresFragment : BaseFragment<FragmentSquaresBinding>(), SquaresFragmentV
                 adapter?.setItems(it)
             }
         })
-
+        setupGridAdapter(4)
         var list: ArrayList<SquaresModel> = ArrayList()
         adapter?.setItems(list.apply {
             (1..10).mapTo(list) { SquaresModel(it.toString()) }
         })
+
     }
 
 }

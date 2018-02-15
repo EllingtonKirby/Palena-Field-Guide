@@ -1,5 +1,6 @@
 package com.palenafieldguide.di.components
 
+import android.app.Application
 import com.palenafieldguide.app.App
 import com.palenafieldguide.di.modules.ActivityBuilder
 import com.palenafieldguide.di.modules.BaseModule
@@ -9,6 +10,10 @@ import com.palenafieldguide.di.utils.PerApplication
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
+import dagger.BindsInstance
+
+
+
 
 @PerApplication
 @Component(
@@ -16,11 +21,18 @@ import dagger.android.support.AndroidSupportInjectionModule
             AndroidSupportInjectionModule::class,
             BaseModule::class,
             NetworkingModule::class,
-            ViewModelModule::class
+            ViewModelModule::class,
+            ActivityBuilder::class
         ]
 )
 
 interface AppComponent : AndroidInjector<App> {
+
     @Component.Builder
-    abstract class Builder : AndroidInjector.Builder<App>()
+    interface Builder {
+        @BindsInstance fun application(application: Application): Builder
+        fun build(): AppComponent
+    }
+
+    fun inject(app: Application)
 }
