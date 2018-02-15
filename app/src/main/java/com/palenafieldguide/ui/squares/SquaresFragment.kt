@@ -10,12 +10,12 @@ import com.palenafieldguide.R
 import com.palenafieldguide.api.models.SquaresModel
 import com.palenafieldguide.databinding.FragmentSquaresBinding
 import com.palenafieldguide.ui.mvp.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_squares.squares_grid
+import kotlinx.android.synthetic.main.fragment_squares.*
 import javax.inject.Inject
 
 class SquaresFragment : BaseFragment<FragmentSquaresBinding>(), SquaresFragmentView {
     override fun setupGridAdapter(spanCount: Int) {
-        squares_grid.layoutManager = GridLayoutManager(context, 4)
+        squares_grid.layoutManager = GridLayoutManager(activity, spanCount)
         squares_grid.adapter = adapter
     }
 
@@ -26,7 +26,8 @@ class SquaresFragment : BaseFragment<FragmentSquaresBinding>(), SquaresFragmentV
     var adapter: SquaresGridAdapter? = null
         @Inject set
 
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     var viewModel: SquaresFragmentViewModel? = null
 
     companion object {
@@ -49,10 +50,12 @@ class SquaresFragment : BaseFragment<FragmentSquaresBinding>(), SquaresFragmentV
                 adapter?.setItems(it)
             }
         })
-
+        setupGridAdapter(4)
         var list: ArrayList<SquaresModel> = ArrayList()
-        adapter?.setItems(list.apply { (1..10).mapTo(list) { SquaresModel(it.toString()) }
+        adapter?.setItems(list.apply {
+            (1..10).mapTo(list) { SquaresModel(it.toString()) }
         })
+
     }
 
 }

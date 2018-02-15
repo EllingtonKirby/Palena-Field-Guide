@@ -2,7 +2,6 @@ package com.palenafieldguide.di.modules
 
 import android.content.Context
 import com.jakewharton.picasso.OkHttp3Downloader
-import com.squareup.picasso.OkHttpDownloader
 import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
@@ -25,5 +24,5 @@ class NetworkingModule {
     fun providesDownloader(client: OkHttpClient): OkHttp3Downloader = OkHttp3Downloader(client)
 
     @Provides
-    fun providesPicasso(application: Context, downloader: OkHttpDownloader): Picasso = Picasso.Builder(application).downloader(downloader).build()
+    fun providesPicasso(application: Context, downloader: OkHttp3Downloader): Picasso = Picasso.Builder(application).downloader(downloader).build()
 }

@@ -2,14 +2,15 @@ package com.palenafieldguide.ui.mvp.viewmodel
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.palenafieldguide.di.utils.PerApplication
 import java.lang.RuntimeException
 import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 
 @Suppress("UNCHECKED_CAST")
-@Singleton class ViewModelFactory
-@Inject constructor(private val creators: Map<Class<out ViewModel>, Provider<ViewModel>>)
+@PerApplication
+class ViewModelFactory
+@Inject constructor(val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>)
     : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         var creator = creators[modelClass]

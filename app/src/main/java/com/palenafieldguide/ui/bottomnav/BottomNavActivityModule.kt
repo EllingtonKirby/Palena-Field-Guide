@@ -1,11 +1,13 @@
 package com.palenafieldguide.ui.bottomnav
 
 import dagger.Module
+import dagger.Provides
 
-@Module(includes = [BottomNavActivityModule.SquaresFragmentModule::class])
-class BottomNavActivityModule {
+
+@Module
+abstract class BottomNavActivityModule {
     @Module
-    class SquaresFragmentModule {
+    abstract class SquaresFragmentModule {
 
     }
 }

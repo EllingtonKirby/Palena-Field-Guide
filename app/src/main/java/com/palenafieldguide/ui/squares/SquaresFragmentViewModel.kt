@@ -9,6 +9,5 @@ import javax.inject.Inject
 
 class SquaresFragmentViewModel @Inject constructor(var picasso: Picasso) : ViewModel() {
 
-
     var squaresData: MutableLiveData<List<SquaresModel>>? = MutableLiveData()
 }
