@@ -23,6 +23,23 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         return binding.root
     }
 
+    /**
+     *  On attach iterate through the fragments parent tree to find the activity that implements
+     *  {@link HasSupportFragmentInjector} and obtain the relevant {@link AndroidInjector} from that
+     *  activities {@link DispatchingAndroidInjector}
+     *
+     *  The sub-component that injects the needed dependencies into this fragment is constructed
+     *  at compilation via the referenced fragment provider.
+     *
+     *  Fragment providers are linked to the parent activities listing in the activity builder.
+     *
+     *  When the parent activities sub-component is created, the associated provider demands the
+     *  creation of a sub component for the fragment.
+     *
+     *  The sub component is created referencing the fragment's module, informing it of the
+     *  dependencies that the fragment requires
+     *
+     **/
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)

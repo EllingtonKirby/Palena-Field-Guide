@@ -12,7 +12,7 @@ class SquaresGridAdapter @Inject constructor() : RecyclerView.Adapter<SquaresGri
     var items: ArrayList<SquaresModel> = ArrayList()
 
     override fun onBindViewHolder(holder: SquaresGridViewHolder?, position: Int) {
-        var squaresView: SquaresItemView = holder?.itemView as SquaresItemView
+        val squaresView: SquaresItemView = holder?.itemView as SquaresItemView
         squaresView.bind(items[position])
     }
 

@@ -16,9 +16,12 @@
 
   <style name="SquaresView"/>
 
-  <style name="SquaresView.Base" parent="CardView">
+  <style name="SquaresView.Base">
     <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
     <item name="cardElevation">@dimen/cardview_default_elevation</item>
+    <item name="cardBackgroundColor">@color/light_gray</item>
+    <item name="cardUseCompatPadding">false</item>
+    <item name="cardPreventCornerOverlap">false</item>
   </style>
 
 

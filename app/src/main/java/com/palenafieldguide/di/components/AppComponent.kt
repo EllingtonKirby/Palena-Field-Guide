@@ -5,7 +5,7 @@ import com.palenafieldguide.app.App
 import com.palenafieldguide.di.modules.ActivityBuilder
 import com.palenafieldguide.di.modules.BaseModule
 import com.palenafieldguide.di.modules.NetworkingModule
-import com.palenafieldguide.di.modules.ViewModelModule
+import com.palenafieldguide.di.modules.ViewModelBuilder
 import com.palenafieldguide.di.utils.PerApplication
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -21,7 +21,7 @@ import dagger.BindsInstance
             AndroidSupportInjectionModule::class,
             BaseModule::class,
             NetworkingModule::class,
-            ViewModelModule::class,
+            ViewModelBuilder::class,
             ActivityBuilder::class
         ]
 )

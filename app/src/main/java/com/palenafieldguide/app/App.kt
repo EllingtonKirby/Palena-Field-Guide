@@ -15,15 +15,19 @@ import javax.inject.Inject
 
 open class App : Application(), HasActivityInjector, HasSupportFragmentInjector {
 
+    /**
+     * Wrappers around mappings of classes descended from android components to relevant injectors
+     * Mapping is assembled via @ContributesAndroidInjector annotated methods
+     */
     @Inject lateinit var activityInjector: DispatchingAndroidInjector<Activity>
+    @Inject lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
 
-    @Inject
-    internal lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-
+    /**
+     *
+     */
     override fun activityInjector(): AndroidInjector<Activity>? {
         return activityInjector
     }
-
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> {
         return fragmentInjector

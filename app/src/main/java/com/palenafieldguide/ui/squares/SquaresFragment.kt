@@ -14,20 +14,10 @@ import kotlinx.android.synthetic.main.fragment_squares.*
 import javax.inject.Inject
 
 class SquaresFragment : BaseFragment<FragmentSquaresBinding>(), SquaresFragmentView {
-    override fun setupGridAdapter(spanCount: Int) {
-        squares_grid.layoutManager = GridLayoutManager(activity, spanCount)
-        squares_grid.adapter = adapter
-    }
 
-    override fun showProgress() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    var adapter: SquaresGridAdapter? = null
-        @Inject set
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject lateinit var adapter: SquaresGridAdapter
     var viewModel: SquaresFragmentViewModel? = null
 
     companion object {
@@ -52,9 +42,18 @@ class SquaresFragment : BaseFragment<FragmentSquaresBinding>(), SquaresFragmentV
         })
         setupGridAdapter(4)
         var list: ArrayList<SquaresModel> = ArrayList()
-        adapter?.setItems(list.apply {
-            (1..10).mapTo(list) { SquaresModel(it.toString()) }
+        adapter?.setItems(
+                list.apply { (1..10).mapTo(list) { SquaresModel(it.toString()) }
         })
+
+    }
+
+    override fun setupGridAdapter(spanCount: Int) {
+        squares_grid.layoutManager = GridLayoutManager(activity, spanCount)
+        squares_grid.adapter = adapter
+    }
+
+    override fun showProgress() {
 
     }
 
