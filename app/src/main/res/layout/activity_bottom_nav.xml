@@ -9,15 +9,10 @@
       type="android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener" />
   </data>
 
-  <android.support.design.widget.CoordinatorLayout
+  <android.support.constraint.ConstraintLayout
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <FrameLayout
-      android:id="@+id/container"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
 
     <android.support.design.widget.BottomNavigationView
       android:id="@+id/bottom_nav"
@@ -28,7 +23,14 @@
       app:itemBackground="@color/colorPrimaryDark"
       app:itemIconTint="@drawable/selector_bottom_nav_element"
       app:itemTextColor="@drawable/selector_bottom_nav_element"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:menu="@menu/bottom_nav_main" />
 
-  </android.support.design.widget.CoordinatorLayout>
+    <FrameLayout
+      android:id="@+id/container"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+      app:layout_constraintTop_toTopOf="parent" />
+  </android.support.constraint.ConstraintLayout>
 </layout>
