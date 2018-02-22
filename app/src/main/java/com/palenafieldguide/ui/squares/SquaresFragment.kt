@@ -10,15 +10,16 @@ import com.palenafieldguide.R
 import com.palenafieldguide.api.models.SquaresModel
 import com.palenafieldguide.databinding.FragmentSquaresBinding
 import com.palenafieldguide.ui.mvp.base.BaseFragment
+import com.palenafieldguide.ui.mvp.viewmodel.ViewModelFragment
 import kotlinx.android.synthetic.main.fragment_squares.*
 import javax.inject.Inject
 
-class SquaresFragment : BaseFragment<FragmentSquaresBinding>(), SquaresFragmentView {
+class SquaresFragment : ViewModelFragment<FragmentSquaresBinding, SquaresFragmentViewModel>(), SquaresFragmentView {
 
+    override val layoutResourceId: Int
+        get() = R.layout.fragment_squares
 
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject lateinit var adapter: SquaresGridAdapter
-    var viewModel: SquaresFragmentViewModel? = null
 
     companion object {
         fun newInstance(): SquaresFragment {
@@ -27,25 +28,23 @@ class SquaresFragment : BaseFragment<FragmentSquaresBinding>(), SquaresFragmentV
 
     }
 
-    override val layoutResourceId: Int
-        get() = R.layout.fragment_squares
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(SquaresFragmentViewModel::class.java)
+        swipe_refresh_layout.setOnRefreshListener({viewModel.generateRandomList()})
+        setupGridAdapter(4)
 
-        viewModel?.squaresData?.observe(this, Observer<List<SquaresModel>> {
+        viewModel.onStart()
+    }
+
+    override fun observeLiveData() {
+        viewModel.squaresData.observe(this, Observer<List<SquaresModel>> {
             if (it != null) {
-                adapter?.setItems(it)
+                swipe_refresh_layout.isRefreshing = false
+                adapter.setItems(it)
+                squares_grid.startLayoutAnimation()
             }
         })
-        setupGridAdapter(4)
-        var list: ArrayList<SquaresModel> = ArrayList()
-        adapter?.setItems(
-                list.apply { (1..10).mapTo(list) { SquaresModel(it.toString()) }
-        })
-
     }
 
     override fun setupGridAdapter(spanCount: Int) {
