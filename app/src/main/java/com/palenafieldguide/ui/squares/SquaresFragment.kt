@@ -1,7 +1,6 @@
 package com.palenafieldguide.ui.squares
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -9,17 +8,18 @@ import android.view.View
 import com.palenafieldguide.R
 import com.palenafieldguide.api.models.SquaresModel
 import com.palenafieldguide.databinding.FragmentSquaresBinding
-import com.palenafieldguide.ui.mvp.base.BaseFragment
 import com.palenafieldguide.ui.mvp.viewmodel.ViewModelFragment
 import kotlinx.android.synthetic.main.fragment_squares.*
 import javax.inject.Inject
+
 
 class SquaresFragment : ViewModelFragment<FragmentSquaresBinding, SquaresFragmentViewModel>(), SquaresFragmentView {
 
     override val layoutResourceId: Int
         get() = R.layout.fragment_squares
 
-    @Inject lateinit var adapter: SquaresGridAdapter
+    @Inject
+    lateinit var adapter: SquaresGridAdapter
 
     companion object {
         fun newInstance(): SquaresFragment {
@@ -31,10 +31,10 @@ class SquaresFragment : ViewModelFragment<FragmentSquaresBinding, SquaresFragmen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(SquaresFragmentViewModel::class.java)
-        swipe_refresh_layout.setOnRefreshListener({viewModel.generateRandomList()})
+        swipe_refresh_layout.setOnRefreshListener({ viewModel.generateRandomList() })
         setupGridAdapter(4)
-
-        viewModel.onStart()
+        observeLiveData()
+        viewModel.generateRandomList()
     }
 
     override fun observeLiveData() {
@@ -55,5 +55,6 @@ class SquaresFragment : ViewModelFragment<FragmentSquaresBinding, SquaresFragmen
     override fun showProgress() {
 
     }
+
 
 }

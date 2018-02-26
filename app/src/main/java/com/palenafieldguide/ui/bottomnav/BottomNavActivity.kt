@@ -10,6 +10,10 @@ import com.palenafieldguide.ui.squares.SquaresFragment
 
 class BottomNavActivity(override val layoutResourceId: Int = R.layout.activity_bottom_nav) : BaseActivity<ActivityBottomNavBinding>(), BottomNavigationView.OnNavigationItemSelectedListener {
 
+    companion object {
+        public var currentPosition : Int = 0
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.navListener = this

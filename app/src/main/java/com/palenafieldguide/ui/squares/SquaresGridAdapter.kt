@@ -1,5 +1,6 @@
 package com.palenafieldguide.ui.squares
 
+import android.support.transition.Fade
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -8,7 +9,10 @@ import com.palenafieldguide.R
 import com.palenafieldguide.api.models.SquaresModel
 import com.palenafieldguide.ui.mvp.recycler.BaseViewHolder
 import com.palenafieldguide.ui.squares.SquaresGridAdapter.SquaresGridViewHolder
+import com.palenafieldguide.ui.squares.detail.DetailsTransition
 import com.palenafieldguide.ui.squares.detail.SquaresDetailFragment
+import kotlinx.android.synthetic.main.item_squares_view.*
+import kotlinx.android.synthetic.main.item_squares_view.view.*
 import javax.inject.Inject
 
 
@@ -24,6 +28,7 @@ class SquaresGridAdapter @Inject constructor(val fragment: SquaresFragment) : Re
     override fun onBindViewHolder(holder: SquaresGridViewHolder?, position: Int) {
         val squaresView: SquaresItemView = holder?.itemView as SquaresItemView
         squaresView.bind(items[position])
+        squaresView.transitionName = position.toString()
     }
 
     override fun getItemCount(): Int {
@@ -50,12 +55,20 @@ class SquaresGridAdapter @Inject constructor(val fragment: SquaresFragment) : Re
     class ViewHolderListenerImpl(val fragment: Fragment) : ViewHolderListener {
 
         override fun onItemClicked(view: View?, adapterPosition: Int) {
+            val squaresView = view as SquaresItemView
+            val newFragment = SquaresDetailFragment.newInstance()
+
+            newFragment.sharedElementEnterTransition = DetailsTransition()
+            newFragment.enterTransition = Fade()
+            newFragment.sharedElementReturnTransition = DetailsTransition()
+            newFragment.exitTransition = Fade()
+
             fragment.fragmentManager?.beginTransaction()
-//                    ?.setReorderingAllowed(true) // Optimize for shared element transition
-//                    ?.addSharedElement(transitioningView, transitioningView.getTransitionName())
-                    ?.replace(
+                    ?.setReorderingAllowed(true) // Optimize for shared element transition
+                    ?.addSharedElement(squaresView.squares_image, "squaresImage")
+                    ?.add(
                             R.id.container,
-                            SquaresDetailFragment.newInstance(),
+                            newFragment,
                             SquaresDetailFragment::class.java.simpleName
                     )
                     ?.addToBackStack(null)
@@ -68,6 +81,7 @@ class SquaresGridAdapter @Inject constructor(val fragment: SquaresFragment) : Re
         : BaseViewHolder<SquaresModel>(squaresView) {
         init {
             squaresView.setOnClickListener { v -> mViewHolderListener.onItemClicked(v, adapterPosition) }
+//            squares_image.transitionName = "squaresImage"
         }
     }
 }

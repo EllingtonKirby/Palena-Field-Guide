@@ -18,7 +18,8 @@ class SquaresItemView(val mContext: Context?) : FrameLayout(mContext!!), BaseVie
         layoutParams = MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 
-    fun bind(model : SquaresModel) {}
+    fun bind(model : SquaresModel) {
+    }
 
     override fun showProgress() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

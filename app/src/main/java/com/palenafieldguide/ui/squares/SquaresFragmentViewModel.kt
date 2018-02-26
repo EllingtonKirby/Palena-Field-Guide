@@ -13,10 +13,6 @@ class SquaresFragmentViewModel @Inject constructor(var picasso: Picasso) : ViewM
 
     var squaresData: MutableLiveData<List<SquaresModel>> = MutableLiveData()
 
-    fun onStart() {
-        generateRandomList()
-    }
-
     fun generateRandomList() {
         var list: ArrayList<SquaresModel> = ArrayList()
         list.apply {

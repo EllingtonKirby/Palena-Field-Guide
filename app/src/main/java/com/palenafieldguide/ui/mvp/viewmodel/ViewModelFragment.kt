@@ -12,10 +12,5 @@ abstract class ViewModelFragment<T : ViewDataBinding, V : ViewModel> : BaseFragm
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: V
 
-    override fun onStart() {
-        super.onStart()
-        observeLiveData()
-    }
-
     abstract fun observeLiveData()
 }

@@ -1,37 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
   <data>
 
   </data>
+
   <android.support.design.widget.CoordinatorLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical"
-      >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/detail_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/collapsing_toolbar_expanded_height"
-        >
+      android:id="@+id/detail_app_bar"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/collapsing_toolbar_expanded_height">
+
       <android.support.design.widget.CollapsingToolbarLayout
-          android:id="@+id/detail_collapsing_toolbar_layout"
+        android:id="@+id/detail_collapsing_toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        android:background="@color/light_gray"
+        app:contentScrim="@color/colorPrimaryDark"
+        >
+
+        <ImageView
+          android:id="@+id/detail_image"
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          >
+          android:layout_height="wrap_content"
+          android:transitionName="squaresImage"
+          />
+
         <android.support.v7.widget.Toolbar
-            android:id="@+id/detail_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            />
+          android:id="@+id/detail_toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          app:layout_collapseMode="pin" />
       </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <LinearLayout
         android:id="@+id/detail_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-    </LinearLayout>
+        android:orientation="vertical"></LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
   </android.support.design.widget.CoordinatorLayout>
 </layout>
