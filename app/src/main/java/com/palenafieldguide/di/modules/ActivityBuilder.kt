@@ -4,6 +4,7 @@ import com.palenafieldguide.di.utils.PerActivity
 import com.palenafieldguide.ui.bottomnav.BottomNavActivity
 import com.palenafieldguide.ui.bottomnav.BottomNavActivityModule
 import com.palenafieldguide.ui.squares.SquaresFragmentProvider
+import com.palenafieldguide.ui.squares.detail.SquaresDetailFragmentProvider
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -22,8 +23,12 @@ abstract class ActivityBuilder {
      *      implement a corresponding structure but for Fragments
      */
 
-
     @PerActivity
-    @ContributesAndroidInjector(modules = [BottomNavActivityModule::class, SquaresFragmentProvider::class])
+    @ContributesAndroidInjector(
+            modules = [
+            BottomNavActivityModule::class,
+            SquaresFragmentProvider::class,
+            SquaresDetailFragmentProvider::class]
+    )
     abstract fun bindsBottomNavActivity(): BottomNavActivity
 }
